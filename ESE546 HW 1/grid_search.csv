@@ -1,0 +1,7 @@
+,params,mean_test_score
+0,"{'C': 1, 'shrinking': True}",0.9567857142857144
+1,"{'C': 1, 'shrinking': False}",0.9567857142857144
+2,"{'C': 10, 'shrinking': True}",0.9629285714285714
+3,"{'C': 10, 'shrinking': False}",0.9629285714285714
+4,"{'C': 50, 'shrinking': True}",0.9627142857142857
+5,"{'C': 50, 'shrinking': False}",0.9627142857142857

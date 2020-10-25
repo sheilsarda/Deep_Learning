@@ -1,0 +1,163 @@
+\documentclass[11pt, reqno, letterpaper, twoside]{amsart}
+\linespread{1.2}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{amssymb, bm, mathtools}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[pdftex, xetex]{graphicx}
+\usepackage{enumerate, setspace}
+\usepackage{float, colortbl, tabularx, longtable, multirow, subcaption, environ, wrapfig, textcomp, booktabs}
+\usepackage{pgf, tikz, framed}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+\usepackage[english]{babel}
+
+\usepackage{microtype}
+\microtypecontext{spacing=nonfrench}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{solution}[theorem]{Solution}
+
+\usepackage{times}
+\title{ESE 546, Fall 2020\\[0.1in]
+Module 1 Summary}
+\author{
+Sheil Sarda [sheil@seas],\\
+}
+
+\begin{document}
+\maketitle
+ Lecture outlines and key takeaways for Module 1
+\begin{enumerate}
+	\item What is intelligence?
+	\begin{enumerate}
+		\item Key components of intelligence
+		\item Intelligence: The Beginning (1942-50)
+		\item Intelligence: Reloaded (1960-2000)
+		\item Intelligence: Revolutions ( 2006-)
+		\item A summary of our goals in this course
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item Perception, Cognition and Action are the three parts any intelligent, autonomous agent possesses.
+		\item Progress in deep learning is driven by cheap computational resources and data availability
+	\end{itemize}
+	\item Linear Regression, Perceptron, Stochastic Gradient Descent
+	\begin{enumerate}
+		\item Problem setup for machine learning
+		\item Linear regression
+		\item Perceptron
+		\item Stochastic Gradient Descent
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item Designing an accurate predictor for in-sample is trivial, since a hash map will do. We want predictors that generalize to new data outside the training set.
+		\item SGD is a simple optimization technique used in the perceptron algorithm where weights are updated every time the perceptron makes mistakes on a datum.
+	\end{itemize}
+	
+	\item Kernels, Beginning of neural networks
+	\begin{enumerate}
+		\item Digging deeper into the perceptron
+		\item Creating nonlinear classifiers from linear ones
+		\item Kernels
+		\item Learning the feature vector
+		\item Deep feed-forward networks
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item Kernels are powerful because they do not require you to think of the feature and parameter spaces.
+		\item Mercer's theorem says that as long as your function of comparing two samples in the data set satisfies the basic properties of a kernel function, there exists some feature space which your function implicitly constructs.
+	\end{itemize}
+	\item Deep fully-connected networks, Backpropogation
+	\begin{enumerate}
+		\item Deep fully-connected networks
+		\item The backpropogation algorithm
+	\end{enumerate}
+		Key takeaways:
+	\begin{itemize}
+		\item A deep network creates new features by composing older features.
+		\item With deep learning, the level of transferable insights from specific fields like NLP, speech processing, etc. has increased, and the bar for entering a new field is much lower.
+		\item Provided the deep network has enough number of layers and enough features at each layer, it can fit any dataset.
+		\item ReLU activation functions are the most popular, compared to threshold, logistic, hyperbolic tangent, etc.
+		\item Backpropogation is an algorithm for computing the gradient of the loss function for a deep network.
+		\item The backprop gradient is shared equitably among the different quantities that took part in the forward computation.
+		\item Forward and backward functions exist for every layer, including activation layers.
+	\end{itemize}
+	\item Convolutional Architectures
+	\begin{enumerate}
+		\item Basics of the convolution operation
+		\item How are convolutions implemented?
+		\item Convolutions for multi-channel images in a deep network
+		\item Translational equivariance using convolutions
+		\item Pooling to build translational invariance
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item Convolutions work in the same way for two-dimensional or three-dimensional input signals. The kernel will be a matrix of size $k \times k$ versus $k \times k \times k$ respectively. 
+		\item Just like fully-connected layers, we can also stack up convolutions. The effective receptive field increases as we go up the layers.
+		\item Convolutions are the most heavily used operator in a deep network. We therefore need to implement them as efficiently as we can.
+		\item If you translate the signal by $\delta$, then the output of convolution is also translated by the same amount. This property is called equivariance, and it holds for 2D convolutions.
+		\item Pooling is an operation that smears out the features locally in the neighborhood of each pixel.
+		\item Max pooling has a side-benefit of reducing the number of operations in a deep network and the number of parameters by sequentially reducing the size of the feature map with layers.
+		\item Too much pooling will dramatically reduce the signal in the input image.
+	\end{itemize}
+	\item Data augmentation, Loss functions
+	\begin{enumerate}
+		\item Data augmentation
+		\item Loss functions
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item Augmenting the data means to create variants of each datum in some simple way such that we know that its label is unchanged.
+		\item Most popular data augmentations techniques are changing brightness, contrast, cropping the image to simulate occlusions, flipping or jittering the image, warping the image using a projection, zooming into a section, etc.
+		\item The goal of data augmentation is similar to replacing fully-connected layers with convolutions and pooling. Both make the model invariant to translations.
+		\item By being invariant to a larger set of nuisances than necessary, we waste model parameters and risk getting a larger test error. In general, the nuisances that the model should be invariant to depends upon the application.
+	\end{itemize}
+	\item Bias-Variance Trade-off
+	\begin{enumerate}
+		\item Bias-Variance Decomposition
+		\item Weight Decay
+		\item Dropout
+		\item Batch-Normalization
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item If we want to measure how well a model works on new data, we are interested in the population risk not the empirical risk (training loss).
+		\item We do not have access to a lot of different datasets to measure the bias or the variance. This is why the bias-variance trade-off, although fundamental in statistics and a great thinking tool, is of limited direct practical value.
+		\item For deep networks, the classical bias-variance trade-off becomes a "double descent" curve where the population risk keeps decreasing even if we fit very large models on relatively small datasets.
+		\item Cross-validation trains $k$ different models, each time a fraction $(k - 1) / k$ of the data is used as the training set and the remainder is used as the validation set. The validation performance of $k$ models obtained by this process is averaged and used as a score to evaluate a model design.
+		\item Restricting the space of models that the training process searches over to fit in the data is called regularization.
+	\end{itemize}
+\end{enumerate}
+
+\clearpage
+Table of lecture and recitation topics:
+% Please add the following required packages to your document preamble:
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Lecture} & \textbf{Topic}                                                                \\ \hline
+		1                & Introduction, History of deep learning                                        \\ \hline
+		Rec 1            & Python, Numpy, Google Colab; ngork, mounting Google Drive, wand.db            \\ \hline
+		2                & Linear Regression, Perceptron, stochastic gradient descent                    \\ \hline
+		Rec 2            & PyTorch I: Syntax, basics of autograd, various modules, layout of the library \\ \hline
+		3                & Kernel methods                                                                \\ \hline
+		4                & Beginning of neural networks                                                  \\ \hline
+		Rec 3            & PyTorch II                                                                    \\ \hline
+		5                & Backpropagation                                                               \\ \hline
+		6                & Convolutional architectures                                                   \\ \hline
+		Rec 4            & Using the AWS cloud                                                           \\ \hline
+		7                & Data Augmentation, Loss functions                                             \\ \hline
+		8                & Dropout, Batch-Normalization                                                  \\ \hline
+		Rec 5            & Neural architectures: hall of fame                                            \\ \hline
+		9                & Recurrent, Attention-based architectures                                      \\ \hline
+	\end{tabular}
+\end{table}
+
+\end{document}
