@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.9.17)  24 OCT 2020 17:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.9.17)  26 OCT 2020 11:56
 entering extended mode
 **./ESE546_hw3.tex
 (ESE546_hw3.tex
@@ -928,34 +928,71 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1{C:/Users/sheil/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3
+ [1{C:/Users/sheil/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+Overfull \hbox (45.62328pt too wide) detected at line 133
+[]
+ []
 
-] [4
+
+Underfull \vbox (badness 4713) has occurred while \output is active []
+
+ [3
 
 ]
-(ESE546_hw3.aux) ) 
+[4]
+Overfull \hbox (15.08867pt too wide) detected at line 180
+[]
+ []
+
+[5
+
+]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
+00.
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+<training losses.png, id=55, 469.755pt x 207.77625pt>
+File: training losses.png Graphic file (type png)
+<use training losses.png>
+Package pdftex.def Info: training losses.png  used on input line 230.
+(pdftex.def)             Requested size: 375.80452pt x 166.2212pt.
+<epoch losses.png, id=56, 447.8331pt x 225.9642pt>
+File: epoch losses.png Graphic file (type png)
+<use epoch losses.png>
+Package pdftex.def Info: epoch losses.png  used on input line 235.
+(pdftex.def)             Requested size: 358.26695pt x 180.77159pt.
+ [6
+
+ <./training losses.png>] [7 <./epoch losses.png>] (ESE546_hw3.aux) ) 
 Here is how much of TeX's memory you used:
- 21147 strings out of 481506
- 419851 string characters out of 2921791
- 720427 words of memory out of 3000000
- 35784 multiletter control sequences out of 15000+200000
- 551861 words of font info for 94 fonts, out of 3000000 for 9000
+ 21205 strings out of 481506
+ 420664 string characters out of 2921791
+ 724427 words of memory out of 3000000
+ 35828 multiletter control sequences out of 15000+200000
+ 552548 words of font info for 99 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 52i,13n,83p,420b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
-msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msb
-m10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on ESE546_hw3.pdf (4 pages, 129489 bytes).
+ 52i,11n,83p,420b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Progra
+m Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/u
+tmr8a.pfb>
+Output written on ESE546_hw3.pdf (7 pages, 320352 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13933 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 13431 words of extra memory for PDF output out of 14400 (max. 10000000)
 

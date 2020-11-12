@@ -1,0 +1,125 @@
+\documentclass[11pt, reqno, letterpaper, twoside]{amsart}
+\linespread{1.2}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{amssymb, bm, mathtools}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[pdftex, xetex]{graphicx}
+\usepackage{enumerate, setspace}
+\usepackage{float, colortbl, tabularx, longtable, multirow, subcaption, environ, wrapfig, textcomp, booktabs}
+\usepackage{pgf, tikz, framed}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+\usepackage[english]{babel}
+% \usepackage[table,xcdraw]{xcolor}
+\usepackage{microtype}
+\microtypecontext{spacing=nonfrench}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{solution}[theorem]{Solution}
+
+\usepackage{times}
+\title{ESE 546, Fall 2020\\[0.1in]
+Module 2 Summary}
+\author{
+Sheil Sarda [sheil@seas]\\
+}
+
+\begin{document}
+\maketitle
+ Lecture outlines and key takeaways for Module 2
+\begin{enumerate}
+	\item Background on Optimization, Gradient Descent (Chapter 9)
+	\begin{enumerate}
+		\item Convexity
+		\item Introduction to Gradient Descent
+		\begin{enumerate}
+			\item Conditions for optimality
+			\item Different types of convergence
+		\end{enumerate}
+		\item Convergence rate for gradient descent
+		\begin{enumerate}
+			\item Some assumptions
+			\item GD for convex functions
+			\item Gradient descent for strongly convex functions
+		\end{enumerate}		
+		\item Limits on convergence rate of first-order methods
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item Monotonicity of the gradient implies convexity.
+		\item The loss function $l$ is always be a function of the entire dataset.
+		\item For gradient descent, if we pick the step-size $\eta \leq \frac{1}{L}$, the gradient descent always improves the value of the function with each iteration and also improves the distance of the weights to the global minimum at each iteration.
+		\item Strong convexity enables fewer iterations to converge. Compared to the $\mathcal{O}(1 / \epsilon)$ iterations required for convex functions, strongly convex functions require only $\mathcal{O}( \operatorname{log}(1/\epsilon))$ iterations.
+		\item Nesterov's lower bound suggests the existence of gradient-based algorithms for convex functions which require $\mathcal{O}(1 / \epsilon^2)$ iterations.
+	\end{itemize}
+	\item Accelerated Gradient Descent (Chapter 10)
+	\begin{enumerate}
+		\item Polyak's Heavy Ball Method
+		\begin{enumerate}
+			\item Polyak's method can fail to converge
+		\end{enumerate}
+		\item Nesterov's method
+		\begin{enumerate}
+			\item Yet another way to write Nesterov's updates
+			\item How to pick the momentum parameter?
+		\end{enumerate}		
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item We can think of the gradient applied to the weight at time $t$ as a force that acts on a particle to update its position between time steps. This particle has no inertia, so the force applied directly affects its position.
+		\item If we give the particle a point mass and some inertia, instead of the force directly affecting the position, we can apply Newton's second law of motion $F = ma$.
+		\item The caveat with relying on inertia to make progress is overshooting behavior around the global minimum since inertia is often very different from the gradient. This results in oscillating behavior.
+		\item Nesterov's method removes the oscillation problem of Polyak by incorporating dampening or friction like in the case of a simple harmonic oscillator.
+	\end{itemize}
+	
+	\item Stochastic Gradient Descent (Chapter 11)
+	\begin{enumerate}
+		\item SGD for least-squares regression
+		\item Convergence of SGD
+		\begin{enumerate}
+			\item Typical assumptions in the analysis of SGD
+			\item Convergence rate of SGD for strongly-convex functions
+			\item When should one use SGD in place of GD?
+		\end{enumerate}
+		\item Accelerating SGD using momentum
+		\begin{enumerate}
+			\item Momentum methods do not accelerate SGD
+		\end{enumerate}		
+		\item Understanding SGD as Markov Chain
+	\end{enumerate}
+	Key takeaways:
+	\begin{itemize}
+		\item It is difficult to do gradient descent if the number of samples $n$ is large because the gradient is a summation of a large number of terms.
+		\item Epochs is a construct introduced in the deep learning libraries for book-keeping purposes, allowing apples-to-apples comparisons between different algorithms.
+		\item After $w^t \in (w_{min}, w_{max})$ (the zone of confusion), there is no real convergence of the weights.
+		\item If the learning rate is large, SGD makes quick progress outside of the zone of confusion but bounces around a lot inside the zone of confusion.
+		\item If the learning rate is too small, SGD is slow outside of the zone of confusion but does not bounce around too much inside the zone.
+	\end{itemize}
+
+\end{enumerate}
+
+
+Table of lecture and recitation topics:
+% Please add the following required packages to your document preamble:
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+	\hline
+	\rowcolor[HTML]{000000} 
+	\multicolumn{1}{|c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Lecture}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Topic}}} \\ \hline
+	14     & Gradient Descent                                      \\ \hline
+	15     & Midterm Exam                                          \\ \hline
+	Rec 9  & Midterm Discussion                                    \\ \hline
+	16     & Momentum (heavy-ball, Nesterov), Adam, Early stopping \\ \hline
+	17     & Stochastic Gradient Descent I                         \\ \hline
+	Rec 10 & Tricks of Trade in training neural networks           \\ \hline
+	\end{tabular}
+\end{table}
+
+\end{document}

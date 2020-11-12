@@ -100,7 +100,7 @@ m \leq \| \nabla^2 f(x) \|_{2} \leq L
 \end{solution}
 
 \clearpage
-\begin{solution}[Time spent: 3 hours]
+\begin{solution}[Time spent: 6 hours]
 To prove:
 \begin{align*}
 	\min _{w} \underset{R}{\mathbb{E}}\left[\|y-(R \odot X) w\|_{2}^{2}\right] &=\min _{\tilde{w}}\|y-X \tilde{w}\|_{2}^{2}+\left(\frac{p}{1-p}\right) \tilde{w}^{\top} \operatorname{diag}\left(X^{\top} X\right) \tilde{w} \\
@@ -114,24 +114,49 @@ For context (from Lecture Notes 07), \begin{itemize}
 	\item If $p = 0$, most activations are retained by the mask and regularization is small.
 	\item Given weights $w$ of a model trained using dropout, we can compute the committee average over models created using dropout masks simply by scaling the weights by a factor $1 - p \implies \tilde{w} = (1-p)w$ is the effective weight.
 \end{itemize}
-The RHS can be re-written as:
+First, we determine $\mathbb{E}\left[R\right]$. Each element of $R$ is a Bernoulli random variable. Therefore,
+\begin{itemize}
+\item Case 1: $R_{ij} = 1$. This occurs with probability $1-p$.
+\item Case 2: $R_{ij} = 0$. This occurs with probability $p$.
+\end{itemize}
+Thus, $\mathbb{E}[R \odot X] = X(1-p)$
+
+We simplify the RHS to eliminate the L2 norm,
 \begin{align*}
 &	\min _{w} \underset{R}{\mathbb{E}}\left[\|y-(R \odot X) w\|_{2}^{2}\right] \\
-\implies &	\min _{w} \left[\|y-(X (1-p)) w\|_{2}^{2}\right] &\text{since $R$ comprises of Bernoulli variables}\\
-\implies &	\min _{w} \left[\|y-X \tilde{w} \|_{2}^{2}\right] &\text{by definition of $\tilde{w}$}\\
+\implies &	\min _{w} \underset{R}{\mathbb{E}}\left[y^2+w^{\top}(R \odot X)^{\top}(R \odot X) w - 2y(R \odot X)w \right] \\
+\implies &	\min _{w} y^2+ \underset{R}{\mathbb{E}}\left[w^{\top}(R \odot X)^{\top}(R \odot X) w \right] - \underset{R}{\mathbb{E}}\left[2y(R \odot X)w \right] &\text{Applying LOE} \\
+\implies &	\min _{w} y^2+ \underset{R}{\mathbb{E}}\left[w^{\top}(R \odot X)^{\top}(R \odot X) w \right] - 2yX(1-p)w  \\
+\implies &	\min _{w} y^2+ \underset{R}{\mathbb{E}}\left[w^{\top}(R \odot X)^{\top}(R \odot X) w \right] - 2yX\tilde{w}  \\
+\implies &	\min _{w} y^2 - 2yX\tilde{w} + \tilde{w}^{\top}X^{\top}X\tilde{w} - \tilde{w}^{\top}X^{\top}X\tilde{w} + \underset{R}{\mathbb{E}}\left[w^{\top}(R \odot X)^{\top}(R \odot X) w \right]  &\text{Completing the square} \\
+\implies &	\min _{w} \| y - X\tilde{w} \|_2^2  - \tilde{w}^{\top}X^{\top}X\tilde{w} + \underset{R}{\mathbb{E}}\left[w^{\top}(R \odot X)^{\top}(R \odot X) w \right]  
 \end{align*}
-Now, to go from $$\min _{w} \left[\|y-X \tilde{w} \|_{2}^{2}\right] \rightarrow \min _{\tilde{w}}\|y-X \tilde{w}\|_{2}^{2}+\left(\frac{p}{1-p}\right) \tilde{w}^{\top} \operatorname{diag}\left(X^{\top} X\right) \tilde{w} $$
-
-We observe that $\left(\frac{p}{1-p}\right) \tilde{w}^{\top} \operatorname{diag}\left(X^{\top} X\right) \tilde{w} $ can be re-written as
+The expression $ \underset{R}{\mathbb{E}}\left[(R \odot X)^{\top}(R \odot X) \right]  $ can be simplified to two cases. \begin{itemize}
+\item Case 1: Elements on the main diagonal of $ \underset{R}{\mathbb{E}}\left[(R_ \odot X)^{\top}(R \odot X) \right]  = (1-p) * X^{\top}X$
+\item Case 2: Elements off the main diagonal $ \underset{R}{\mathbb{E}}\left[(R_ \odot X)^{\top}(R \odot X) \right]  = (1-p)^2 * X^{\top}X$
+\end{itemize}
+We can express this product in inline notation as
 \begin{align*}
-& \left(\frac{p}{1-p}\right) \tilde{w}^{\top} \operatorname{diag}\left(X^{\top} X\right) \tilde{w} \\
-\implies & \left(\frac{p}{1-p}\right) \tilde{w}^{\top} \operatorname{diag}\left(X^{\top} X\right) w (1-p) \\
-\implies & p(1-p) \; w^{\top} \operatorname{diag}\left(X^{\top} X\right) w \\
+\underset{R}{\mathbb{E}}\left[(R \odot X)^{\top}(R \odot X) \right]  & =   \operatorname{diag}\left(X^{\top} X\right) (1-p) +  \left(\left(X^{\top} X\right) - \operatorname{diag}\left(X^{\top} X\right)\right) (1-p)^2 \\
+& =   \operatorname{diag}\left(X^{\top} X\right) (1-p) +  \left(X^{\top} X\right)(1-p)^2 - \operatorname{diag}\left(X^{\top} X\right) (1-p)^2 \\
+& =   \operatorname{diag}\left(X^{\top} X\right) (1-p)p +  \left(X^{\top} X\right)(1-p)^2\\
 \end{align*}
+
+Substituting this expression into the above equation,
+\begin{align*}
+&	\min _{w} \| y - X\tilde{w} \|_2^2  - \tilde{w}^{\top}X^{\top}X\tilde{w} +\\
+&\qquad w^{\top}\left( \operatorname{diag}\left(X^{\top} X\right) (1-p)p +  \left(X^{\top} X\right)(1-p)^2 \right) w \\
+\implies &	\min _{w} \| y - X\tilde{w} \|_2^2  - \tilde{w}^{\top}X^{\top}X\tilde{w} + w^{\top} \operatorname{diag}\left(X^{\top} X\right) (1-p)p \; w + \\
+&\qquad w^{\top} \left(X^{\top} X\right) (1-p)^2 w \\
+\implies &	\min _{w} \| y - X\tilde{w} \|_2^2  - \tilde{w}^{\top}X^{\top}X\tilde{w} + w^{\top} \operatorname{diag}\left(X^{\top} X\right) (1-p)p \; w + \\
+&\qquad \tilde{w}^{\top} \left(X^{\top} X\right) \tilde{w} \\
+\implies & \min _{\tilde{w}}\|y-X \tilde{w}\|_{2}^{2}+\left(\frac{p}{1-p}\right) \tilde{w}^{\top} \operatorname{diag}\left(X^{\top} X\right) \tilde{w} \qquad \qquad \text{ where } \tilde{w} =(1-p) w \\
+\end{align*}
+\qed
 \end{solution}
 
 \clearpage
-\begin{solution}[Time spent: 3 hours]
+\begin{solution}[Time spent: 6 hours]
 Population risk of a regression is
 \begin{align*}
 R(f)=\int|f(x)-y|^{2} P(x, y) \mathrm{d} x \mathrm{d} y
@@ -141,21 +166,75 @@ Prove that model that minimizes the population risk is
 \begin{align*}
 f^{*}=\underset{f}{\operatorname{argmin}} R(f)=\mathbb{E}[y \mid x]
 \end{align*}
-
-
-Notes:
-This is the MSE loss. Minimum of that is the conditional mean of $y | x$. If just trying to optimize $R(f)$, how do you take into account the integral?
-
-The conditional expectation is essentially the integral of $y \times p(y | x) \times dy$. Just looking for the minimum, so write some equations to find the minimum (differentiation with respect to $f$).
-
-You are finding the min of the regressor by differentiating.
-
-Proof:
-
+First simplify the expression inside the integral as
 \begin{align*}
-\| f(x) = 
+ f(x) -  y  &=   f(x) + \mathbb{E}[y \mid x] - \mathbb{E}[y \mid x] -  y  \\
+&=   \left(y - \mathbb{E}[y \mid x] \right)^2 + 2 \left(y - \mathbb{E}[y \mid x] \right) \left( \mathbb{E}[y \mid x] - f(x)\right) + \left( \mathbb{E}[y \mid x] - f(x)\right)^2  \\
 \end{align*}
+Substituting the above into the given integral
+\begin{align*}
+R(f)&=\int|f(x)-y|^{2} P(x, y) \mathrm{d} x \mathrm{d} y \\
+&=\int|\left(y - \mathbb{E}[y \mid x] \right)^2 + 2 \left(y - \mathbb{E}[y \mid x] \right) \left( \mathbb{E}[y \mid x] - f(x)\right) + \left( \mathbb{E}[y \mid x] - f(x)\right)^2|^{2} P(x, y) \mathrm{d} x \mathrm{d} y \\
+&=\int\left(y - \mathbb{E}[y \mid x] \right)^2P(x, y) \mathrm{d} x \mathrm{d} y + 2 \int \left(y - \mathbb{E}[y \mid x] \right) \left( \mathbb{E}[y \mid x] - f(x)\right)P(x, y) \mathrm{d} x \mathrm{d} y + \\
+& \qquad \int\left( \mathbb{E}[y \mid x] - f(x)\right)^2 P(x, y) \mathrm{d} x \mathrm{d} y \\
+\end{align*}
+Since we need to minimize $f$, ignore the first integral term above as it does not contain $f$. Next, we simplify the middle term of the integral as follows
+\begin{align*}
+&\left(y - \mathbb{E}[y \mid x] \right) \left( \mathbb{E}[y \mid x] - f(x)\right)\\
+\implies&\left(\mathbb{E} [y - \mathbb{E}[y \mid x] \mid x]\right) \left( \mathbb{E}[y \mid x] - f(x) \right) &\text{Tower property of conditional expectation}\\
+\implies&\left(\mathbb{E} [y \mid x] - \mathbb{E}[\mathbb{E}[y \mid x] \mid x]\right) \left( \mathbb{E}[y \mid x] - f(x) \right) &\text{Applying LOE}\\
+\implies&\left(\mathbb{E} [y \mid x] - \mathbb{E}[y \mid x] \right) \left( \mathbb{E}[y \mid x] - f(x) \right) \\
+\implies& 0 \\
+\end{align*}
+Substituting the above result into our original integral, we now need to optimize
+\begin{align*}
+&f^{*}=\underset{f}{\operatorname{argmin}} \int\left( \mathbb{E}[y \mid x] - f(x)\right)^2 P(x, y) \mathrm{d} x \mathrm{d} y \\
+\end{align*}
+Analytically, the above integral will be minimized when $f(x) = \mathbb{E}[y \mid x]$. Thus, the optimal classifier $f^{*}(x) = \mathbb{E}[y \mid x]$.
+\qed
+\end{solution}
+\clearpage
+
+\begin{solution}[Time spent: 8 hours]
+The RNN class built for this question
+\begin{verbatim}
+class RNN(nn.Module):
+
+  def __init__(self, input_dim, hidden_dim, output_dim, 
+               no_layers = 1):
+    super(RNN, self).__init__()
+    self.input_dim = input_dim
+    self.hidden_dim = hidden_dim
+    self.output_dim = output_dim
+    self.no_layers = no_layers
+
+    self.rnn_layer = nn.RNN(self.input_dim, 
+                            self.hidden_dim, self.no_layers,
+                            batch_first = True,
+                            nonlinearity='tanh')
+    self.linear_out = nn.Linear(self.hidden_dim, self.output_dim)
+    self.softmax = nn.LogSoftmax(dim = 1)
+
+  def forward(self, x):
+    batch_size = x.size(0)
+    hidden = torch.zeros(self.no_layers, 
+                         batch_size, 
+                         self.hidden_dim).requires_grad_()
+    out, hidden = self.rnn_layer(x, hidden.detach())
+    out = out.view(batch_size, len(s))
+    return out, hidden
+\end{verbatim}
+Training losses for 100 epochs with 1 Million characters in the training set (40K minibatches), with losses plotted every 1000 minibatches.
+
+\begin{figure}[H]
+\includegraphics[scale=0.8]{training losses}
+\end{figure}
+
+Training losses at each epoch.
+\begin{figure}[H]
+	\includegraphics[scale=0.8]{epoch losses}
+\end{figure}
 
 \end{solution}
 
-\end{document}7
+\end{document}
