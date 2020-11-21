@@ -80,49 +80,49 @@ Sheil Sarda [sheil@seas]\\
 	\begin{itemize}
 		\item A
 	\end{itemize}
+	
 	\item Shape of the energy landscape of neural networks (Chapter 12)
 	\begin{enumerate}
-		\item Polyak's Heavy Ball Method
-		\begin{enumerate}
-			\item Polyak's method can fail to converge
-		\end{enumerate}
-		\item Nesterov's method
-		\begin{enumerate}
-			\item Yet another way to write Nesterov's updates
-			\item How to pick the momentum parameter?
-		\end{enumerate}		
+		\item Introduction
+		\item Deep Linear Networks
+		\item Extending the picture to deep networks		
 	\end{enumerate}
 	Key takeaways:
 	\begin{itemize}
-		\item We can think of the gradient applied to the weight at time $t$ as a force that acts on a particle to update its position between time steps. This particle has no inertia, so the force applied directly affects its position.
-		\item If we give the particle a point mass and some inertia, instead of the force directly affecting the position, we can apply Newton's second law of motion $F = ma$.
-		\item The caveat with relying on inertia to make progress is overshooting behavior around the global minimum since inertia is often very different from the gradient. This results in oscillating behavior.
-		\item Nesterov's method removes the oscillation problem of Polyak by incorporating dampening or friction like in the case of a simple harmonic oscillator.
+		\item A
 	\end{itemize}
 	
-	\item Stochastic Gradient Descent (Chapter 11)
-	\begin{enumerate}
-		\item SGD for least-squares regression
-		\item Convergence of SGD
+	\item Object Detection \& Image Segmentation (Recitation 11)
 		\begin{enumerate}
-			\item Typical assumptions in the analysis of SGD
-			\item Convergence rate of SGD for strongly-convex functions
-			\item When should one use SGD in place of GD?
+			\item Object Detection Framework
+			\item R-CNN
+			\item Fast R-CNN
+			\item Faster R-CNN
+			\item You Only Look Once (YOLO)
+			\item Image Segmentation
+			\item Mask R-CNN	
 		\end{enumerate}
-		\item Accelerating SGD using momentum
+		Key takeaways:
+		\begin{itemize}
+			\item A
+		\end{itemize}
+		
+		
+	\item Generalization Bounds (Recitation 10)
 		\begin{enumerate}
-			\item Momentum methods do not accelerate SGD
-		\end{enumerate}		
-		\item Understanding SGD as Markov Chain
-	\end{enumerate}
-	Key takeaways:
-	\begin{itemize}
-		\item It is difficult to do gradient descent if the number of samples $n$ is large because the gradient is a summation of a large number of terms.
-		\item Epochs is a construct introduced in the deep learning libraries for book-keeping purposes, allowing apples-to-apples comparisons between different algorithms.
-		\item After $w^t \in (w_{min}, w_{max})$ (the zone of confusion), there is no real convergence of the weights.
-		\item If the learning rate is large, SGD makes quick progress outside of the zone of confusion but bounces around a lot inside the zone of confusion.
-		\item If the learning rate is too small, SGD is slow outside of the zone of confusion but does not bounce around too much inside the zone.
-	\end{itemize}
+			\item PAC learning
+			\item Union and Chernoff Bounds
+			\begin{enumerate}
+			\item Union Bound (or Boole's Inequality)
+			\item Measure Concentration Inequalities
+			\end{enumerate}
+			\item Generalization Bounds and Uniform convergence
+			\item VC-dimension
+		\end{enumerate}
+		Key takeaways:
+		\begin{itemize}
+			\item A
+		\end{itemize}			
 
 \end{enumerate}
 
@@ -141,6 +141,7 @@ Table of lecture and recitation topics:
 19     & Stochastic Gradient Descent II \\ \hline
 Rec 11 & Vignette: Object Detection     \\ \hline
 20     & Markov Chains                  \\ \hline
+Rec 12 & Generalization Bounds          \\ \hline
 \end{tabular}
 \end{table}
 \end{document}
