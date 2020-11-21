@@ -30,33 +30,57 @@ Sheil Sarda [sheil@seas]\\
 
 \begin{document}
 \maketitle
- Lecture outlines and key takeaways for Module 2
+ Lecture outlines and key takeaways for Module 3
 \begin{enumerate}
-	\item Background on Optimization, Gradient Descent (Chapter 9)
+	\item Stochastic Gradient Descent (Chapter 11)
 	\begin{enumerate}
-		\item Convexity
-		\item Introduction to Gradient Descent
+		\item SGD for least-squares regression
+		\item Convergence of SGD
 		\begin{enumerate}
-			\item Conditions for optimality
-			\item Different types of convergence
+			\item Strongly convex functions
+			\item What is the appropriate notion of convergence?
+			\item Descent Lemma for SGD
+			\item Typical assumptions in the analysis of SGD
+			\begin{enumerate}
+			\item Stochastic gradients are unbiased
+			\item Second moment of gradient norm does not grow too quickly
+			\end{enumerate}
+			\item Descent Lemma for SGD with additional assumptions
+			\item Convergence rate of SGD for strongly convex functions
+			\item Optimality gap for SGD (Theorem)
+			\item Heuristic for training neural networks
+			\item Convergence rate of SGD for decaying step-size (Theorem)
+			\item Convergence rate for mini-batch SGD
+			\item When should one use SGD in place of Gradient Descent?
 		\end{enumerate}
-		\item Convergence rate for gradient descent
+		\item Accelerating SGD using momentum
 		\begin{enumerate}
-			\item Some assumptions
-			\item GD for convex functions
-			\item Gradient descent for strongly convex functions
-		\end{enumerate}		
-		\item Limits on convergence rate of first-order methods
+			\item Polyak-Ruppert averaging
+			\item Momentum methods do not accelerate SGD
+			\item Why do we use Nesterov's method to train neural networks?
+		\end{enumerate}
+		\item Understanding SGD as a Markov Chain
+		\begin{enumerate}
+		\item Gradient flow
+		\item Markov chains
+		\item Invariant distribution of a Markov chain
+		\item Time spent at a particular state by the Markov chain
+		\item A Markov chain model of SGD
+		\begin{enumerate}
+			\item Transition probability of SGD
+			\item Variance of SGD weight updates
+			\item SGD is like GD with Gaussian noise
+		\end{enumerate}
+		\item The Gibbs distribution
+		\item Convergence of a Markov chain to its invariant distribution
+		\item KL Divergence monotonically decreases (Lemma)
+		\end{enumerate}
 	\end{enumerate}
 	Key takeaways:
 	\begin{itemize}
-		\item Monotonicity of the gradient implies convexity.
-		\item The loss function $l$ is always be a function of the entire dataset.
-		\item For gradient descent, if we pick the step-size $\eta \leq \frac{1}{L}$, the gradient descent always improves the value of the function with each iteration and also improves the distance of the weights to the global minimum at each iteration.
-		\item Strong convexity enables fewer iterations to converge. Compared to the $\mathcal{O}(1 / \epsilon)$ iterations required for convex functions, strongly convex functions require only $\mathcal{O}( \operatorname{log}(1/\epsilon))$ iterations.
-		\item Nesterov's lower bound suggests the existence of gradient-based algorithms for convex functions which require $\mathcal{O}(1 / \epsilon^2)$ iterations.
+		\item A
 	\end{itemize}
-	\item Accelerated Gradient Descent (Chapter 10)
+	\item Shape of the energy landscape of neural networks (Chapter 12)
 	\begin{enumerate}
 		\item Polyak's Heavy Ball Method
 		\begin{enumerate}
