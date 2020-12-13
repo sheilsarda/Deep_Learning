@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.9.17)  12 DEC 2020 21:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.9.17)  12 DEC 2020 21:56
 entering extended mode
 **./hw_template.tex
 (hw_template.tex
@@ -887,21 +887,16 @@ Overfull \hbox (73.11731pt too wide) detected at line 56
 []
  []
 
-
-Overfull \hbox (73.27249pt too wide) detected at line 67
-[]
- []
-
 [2
 
-]
-<images/subsample.png, id=44, 574.145pt x 300.12125pt>
+] [3]
+<images/subsample.png, id=49, 574.145pt x 300.12125pt>
 File: images/subsample.png Graphic file (type png)
 <use images/subsample.png>
-Package pdftex.def Info: images/subsample.png  used on input line 80.
+Package pdftex.def Info: images/subsample.png  used on input line 91.
 (pdftex.def)             Requested size: 360.0pt x 188.18439pt.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 8
-5.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 9
+6.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -910,47 +905,47 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (16.88217pt too wide) in paragraph at lines 117--117
+Overfull \hbox (16.88217pt too wide) in paragraph at lines 128--128
  []        \OT1/pcr/m/n/10.95 logvar = (fc2_out[:, 8:] + fc3_out[:, 8:])/2[] 
  []
 
-[3 <./images/subsample.png>]
-Overfull \hbox (35.27815pt too wide) in paragraph at lines 133--133
+[4 <./images/subsample.png>]
+Overfull \hbox (35.27815pt too wide) in paragraph at lines 144--144
  []    \OT1/pcr/m/n/10.95 contribution = 1 + sigma - mu**2 - torch.exp(sigma)[]
  
  []
 
 
-Overfull \hbox (2.42819pt too wide) in paragraph at lines 133--133
+Overfull \hbox (2.42819pt too wide) in paragraph at lines 144--144
  []                                  \OT1/pcr/m/n/10.95 reduction='sum')[] 
  []
 
-[4]
-<images/elbo.png, id=54, 714.67pt x 353.32pt>
+[5]
+<images/elbo.png, id=59, 714.67pt x 353.32pt>
 File: images/elbo.png Graphic file (type png)
 <use images/elbo.png>
-Package pdftex.def Info: images/elbo.png  used on input line 138.
+Package pdftex.def Info: images/elbo.png  used on input line 149.
 (pdftex.def)             Requested size: 431.9989pt x 213.57326pt.
-<images/reconstruction_1.png, id=55, 574.145pt x 537.00626pt>
+<images/reconstruction_1.png, id=60, 574.145pt x 537.00626pt>
 File: images/reconstruction_1.png Graphic file (type png)
 <use images/reconstruction_1.png>
-Package pdftex.def Info: images/reconstruction_1.png  used on input line 145.
+Package pdftex.def Info: images/reconstruction_1.png  used on input line 156.
 (pdftex.def)             Requested size: 251.9989pt x 235.69351pt.
-<images/reconstruction_2.png, id=56, 574.145pt x 537.00626pt>
+<images/reconstruction_2.png, id=61, 574.145pt x 537.00626pt>
 File: images/reconstruction_2.png Graphic file (type png)
 <use images/reconstruction_2.png>
-Package pdftex.def Info: images/reconstruction_2.png  used on input line 150.
+Package pdftex.def Info: images/reconstruction_2.png  used on input line 161.
 (pdftex.def)             Requested size: 251.9989pt x 235.69351pt.
 
 Underfull \vbox (badness 2245) has occurred while \output is active []
 
- [5 <./images/elbo.png> <./images/reconstruction_1.png>]
-<images/random.png, id=62, 1137.24875pt x 1064.97874pt>
+ [6 <./images/elbo.png> <./images/reconstruction_1.png>]
+<images/random.png, id=67, 1137.24875pt x 1064.97874pt>
 File: images/random.png Graphic file (type png)
 <use images/random.png>
-Package pdftex.def Info: images/random.png  used on input line 156.
+Package pdftex.def Info: images/random.png  used on input line 167.
 (pdftex.def)             Requested size: 251.9989pt x 235.98607pt.
- [6 <./images/reconstruction_2.png> <./images/random.png>] (hw_template.aux)
+ [7 <./images/reconstruction_2.png> <./images/random.png>] (hw_template.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -958,7 +953,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  20541 strings out of 481506
  411064 string characters out of 2921791
- 694368 words of memory out of 3000000
+ 693368 words of memory out of 3000000
  35189 multiletter control sequences out of 15000+200000
  552019 words of font info for 90 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -970,12 +965,14 @@ ype1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/urw/times/utmr8a.pfb>
-Output written on hw_template.pdf (6 pages, 190788 bytes).
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/urw/times/utmr8a.pfb>
+Output written on hw_template.pdf (7 pages, 203345 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  14470 words of extra memory for PDF output out of 17280 (max. 10000000)
 

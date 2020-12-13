@@ -54,16 +54,27 @@ Starting with the definition of KL Divergence:
 				    &= log( Z ) \sum_{w \in \mathcal{W}} q(w) + \sum_{w \in \mathcal{W}} q(w)  log( q(w) ) +   \beta \sum_{w \in \mathcal{W}} q(w) \Phi(w)	\\			    
 				    &= log( Z ) + \sum_{w \in \mathcal{W}} q(w)  log( q(w) ) +   \beta \sum_{w \in \mathcal{W}} q(w) \Phi(w)	 &\text{Since $\sum_{w \in \mathcal{W}} q(w) = 1 $} \\
 \end{align*}
-
-Looking for an expression to substitute for $\Phi(w)$:
+\qed
+\newpage
+\item To Prove:
+\begin{align*}
+\underset{w \sim p(w)}{\mathbb{E}}[\Phi(w)]=-\frac{\partial \log Z(\beta)}{\partial \beta} 
+\end{align*}
+Starting from the LHS:
+\begin{align*}
+\underset{w \sim p(w)}{\mathbb{E}}[\Phi(w)] &=\sum_{w \in \mathcal{W}} p(w) \Phi(w)
+\end{align*}
+Substituting for $\Phi(w)$:
 \begin{align*}
 1  &= \sum_{w \in \mathcal{W}} p(w) = \sum_{w \in \mathcal{W}}\frac{e^{\beta \Phi(w)}}{Z} \\
 \implies Z &= \sum_{w \in \mathcal{W}}e^{\beta \Phi(w)} \\
 \implies \frac{\partial Z}{\partial \beta} &= \sum_{w \in \mathcal{W}}e^{\beta \Phi(w)} \left( -\Phi(w) \right)  \\
 &\text{By definition of $p(w)$, we also know: } \\
-&p(w) = \frac{e^{\beta \Phi(w)}}{Z}  \implies Z \times p(w) = e^{\beta \Phi(w)} \\
-&\text{Substituting the above expression and taking the partial derivative w.r.t. $\beta$ on both sides: } \\
+&p(w) = \frac{e^{\beta \Phi(w)}}{Z}  \implies Z \times p(w) = e^{\beta \Phi(w)} &(1)\\
+&log(Z \times p(w)) = -\beta \Phi(w) \implies \Phi(w) = \frac{log(Z \times p(w))}{-\beta }  &(2)  \\
+&\text{Substituting (1)  + taking partial w.r.t. $\beta$ on both sides: } \\
 \frac{\partial log  Z}{\partial \beta} &= \sum_{w \in \mathcal{W}} Z \times p(w) \frac{log(Z \times p(w))}{\beta} \\
+\frac{\partial log  Z}{\partial \beta} &= -Z \sum_{w \in \mathcal{W}} \frac{log(Z \times p(w))}{-\beta} \times p(w) \\
 \end{align*}
 
 \end{enumerate}
