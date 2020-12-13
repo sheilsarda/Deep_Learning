@@ -1,0 +1,101 @@
+\documentclass[11pt, reqno, letterpaper, twoside]{amsart}
+\linespread{1.2}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{amssymb, bm, mathtools}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[pdftex, xetex]{graphicx}
+\usepackage{enumerate, setspace}
+\usepackage{float, colortbl, tabularx, longtable, multirow, subcaption, environ, wrapfig, textcomp, booktabs}
+\usepackage{pgf, tikz, framed}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+\usepackage[english]{babel}
+% \usepackage[table,xcdraw]{xcolor}
+\usepackage{microtype}
+\microtypecontext{spacing=nonfrench}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{solution}[theorem]{Solution}
+
+\usepackage{times}
+\title{ESE 546, Fall 2020\\[0.1in]
+Module 4 Summary}
+\author{
+Sheil Sarda [sheil@seas]\\
+}
+
+\begin{document}
+\maketitle
+ Lecture outlines and key takeaways for Module 4
+\begin{enumerate}
+	\item Stochastic Gradient Descent (Chapter 11)
+	\begin{enumerate}
+		\item SGD for least-squares regression
+		\item Convergence of SGD
+		\begin{enumerate}
+			\item Strongly convex functions
+			\item What is the appropriate notion of convergence?
+			\item Descent Lemma for SGD
+			\item Typical assumptions in the analysis of SGD
+			\begin{enumerate}
+			\item Stochastic gradients are unbiased
+			\item Second moment of gradient norm does not grow too quickly
+			\end{enumerate}
+			\item Descent Lemma for SGD with additional assumptions
+			\item Convergence rate of SGD for strongly convex functions
+			\item Optimality gap for SGD (Theorem)
+			\item Heuristic for training neural networks
+			\item Convergence rate of SGD for decaying step-size (Theorem)
+			\item Convergence rate for mini-batch SGD
+			\item When should one use SGD in place of Gradient Descent?
+		\end{enumerate}
+		\item Accelerating SGD using momentum
+		\begin{enumerate}
+			\item Polyak-Ruppert averaging
+			\item Momentum methods do not accelerate SGD
+			\item Why do we use Nesterov's method to train neural networks?
+		\end{enumerate}
+		\item Understanding SGD as a Markov Chain
+		\begin{enumerate}
+		\item Gradient flow
+		\item Markov chains
+		\item Invariant distribution of a Markov chain
+		\item Time spent at a particular state by the Markov chain
+		\item A Markov chain model of SGD
+		\begin{enumerate}
+			\item Transition probability of SGD
+			\item Variance of SGD weight updates
+			\item SGD is like GD with Gaussian noise
+		\end{enumerate}
+		\item The Gibbs distribution
+		\item Convergence of a Markov chain to its invariant distribution
+		\item KL Divergence monotonically decreases (Lemma)
+		\end{enumerate}
+	\end{enumerate}
+	
+
+\end{enumerate}
+
+
+Table of lecture and recitation topics:
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor[HTML]{000000} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Lecture}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Topic}}} \\ \hline
+18     & Stochastic Gradient Descent I  \\ \hline
+19     & Stochastic Gradient Descent II \\ \hline
+Rec 11 & Vignette: Object Detection     \\ \hline
+20     & Markov Chains                  \\ \hline
+Rec 12 & Generalization Bounds          \\ \hline
+\end{tabular}
+\end{table}
+\end{document}
