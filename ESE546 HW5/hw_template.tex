@@ -45,6 +45,27 @@ Sheil Sarda [sheils@seas]
 \begin{align*}
 \mathrm{KL}(q \| p)=\beta \sum_{w \in \mathcal{W}} q(w) \Phi(w)+\sum_{w \in \mathcal{W}} q(w) \log q(w)+\log Z(\beta)
 \end{align*}
+
+Starting with the definition of KL Divergence:
+\begin{align*}
+\mathrm{KL}(q \| p) &=\sum_{w \in \mathcal{W}} q(w) \frac{q(w)}{p(w)} \\
+				    &=\sum_{w \in \mathcal{W}} q(w) \frac{Z q(w)}{e^{-\beta \Phi(w)}} &\text{Since $p(w) = \frac{e^{\beta \Phi(w)}}{Z} $} \\
+				    &=\sum_{w \in \mathcal{W}} q(w) \left[log( Z ) + log( q(w) ) + \beta \Phi(w)\right] \\
+				    &= log( Z ) \sum_{w \in \mathcal{W}} q(w) + \sum_{w \in \mathcal{W}} q(w)  log( q(w) ) +   \beta \sum_{w \in \mathcal{W}} q(w) \Phi(w)	\\			    
+				    &= log( Z ) + \sum_{w \in \mathcal{W}} q(w)  log( q(w) ) +   \beta \sum_{w \in \mathcal{W}} q(w) \Phi(w)	 &\text{Since $\sum_{w \in \mathcal{W}} q(w) = 1 $} \\
+\end{align*}
+
+Looking for an expression to substitute for $\Phi(w)$:
+\begin{align*}
+1  &= \sum_{w \in \mathcal{W}} p(w) = \sum_{w \in \mathcal{W}}\frac{e^{\beta \Phi(w)}}{Z} \\
+\implies Z &= \sum_{w \in \mathcal{W}}e^{\beta \Phi(w)} \\
+\implies \frac{\partial Z}{\partial \beta} &= \sum_{w \in \mathcal{W}}e^{\beta \Phi(w)} \left( -\Phi(w) \right)  \\
+&\text{By definition of $p(w)$, we also know: } \\
+&p(w) = \frac{e^{\beta \Phi(w)}}{Z}  \implies Z \times p(w) = e^{\beta \Phi(w)} \\
+&\text{Substituting the above expression and taking the partial derivative w.r.t. $\beta$ on both sides: } \\
+\frac{\partial log  Z}{\partial \beta} &= \sum_{w \in \mathcal{W}} Z \times p(w) \frac{log(Z \times p(w))}{\beta} \\
+\end{align*}
+
 \end{enumerate}
 \end{solution}
 \newpage
