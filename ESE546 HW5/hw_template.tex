@@ -70,13 +70,13 @@ Substituting for $\Phi(w)$:
 \implies Z &= \sum_{w \in \mathcal{W}}e^{\beta \Phi(w)} \\
 \implies \frac{\partial Z}{\partial \beta} &= \sum_{w \in \mathcal{W}}e^{\beta \Phi(w)} \left( -\Phi(w) \right)  \\
 &\text{By definition of $p(w)$, we also know: } \\
-&p(w) = \frac{e^{\beta \Phi(w)}}{Z}  \implies Z \times p(w) = e^{\beta \Phi(w)} &(1)\\
-&log(Z \times p(w)) = -\beta \Phi(w) \implies \Phi(w) = \frac{log(Z \times p(w))}{-\beta }  &(2)  \\
-&\text{Substituting (1)  + taking partial w.r.t. $\beta$ on both sides: } \\
-\frac{\partial log  Z}{\partial \beta} &= \sum_{w \in \mathcal{W}} Z \times p(w) \frac{log(Z \times p(w))}{\beta} \\
-\frac{\partial log  Z}{\partial \beta} &= -Z \sum_{w \in \mathcal{W}} \frac{log(Z \times p(w))}{-\beta} \times p(w) \\
+&p(w) = \frac{e^{\beta \Phi(w)}}{Z}  \implies Z \times p(w) = e^{\beta \Phi(w)} \\
+&\text{Substituting into the RHS: } \\
+\frac{\partial Z}{\partial \beta} &= \sum_{w \in \mathcal{W}} -Z \times p(w) \times \Phi(w) \\
+-\frac{\partial log Z}{\partial \beta} &= \sum_{w \in \mathcal{W}} p(w) \times \Phi(w) \\
+-\frac{\partial log Z}{\partial \beta} &= \underset{w \sim p(w)}{\mathbb{E}}[\Phi(w)] \\
 \end{align*}
-
+\qed
 \end{enumerate}
 \end{solution}
 \newpage
