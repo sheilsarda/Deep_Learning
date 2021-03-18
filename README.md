@@ -8,10 +8,7 @@ Taught by Prof. Pratik Chaudhari in Fall 2020
 
 ## Assignments Overview
 
-### PS0 Calculus and Statistics Refresher
-
-- Refresh the fundamentals of Calculus required for the class
-- Refresh the fundamentals of Statistics required for the class
+**Note:** PS0 was just a refresher for the Calculus and Statistics concepts required for the class.
 
 ### PS1 SVM and Neural Networks
 
@@ -27,6 +24,11 @@ Taught by Prof. Pratik Chaudhari in Fall 2020
 - Train a convolutional neural network on the CIFAR-10 dataset
 - Understand the vanishing gradient problem and how the LSTM architecture solves this
 
+### PS3 Cauchy-Schwartz inequality and RNNs
 
+- Use the Cauchy-Schwartz inequality to prove that the co-coercivity of the gradient and its Lipschitz continuity are equivalent 
+- Implement a RNN for predicting the next character in a given sentence using Leo Tolstoy's War and Peace as the training dataset
+
+### PS4 
 
 ## [Final Project: Few-Shot Meta Q-Learning with Reptile](https://github.com/sheilsarda/ESE546_Final_Project)
