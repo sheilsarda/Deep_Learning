@@ -29,6 +29,14 @@ Taught by Prof. Pratik Chaudhari in Fall 2020
 - Use the Cauchy-Schwartz inequality to prove that the co-coercivity of the gradient and its Lipschitz continuity are equivalent 
 - Implement a RNN for predicting the next character in a given sentence using Leo Tolstoy's War and Peace as the training dataset
 
-### PS4 
+### PS4 Logistic Regression and CNN Hyperparameter tuning
+
+- Implement logistic regression for classifying zero and one from MNIST only using `numpy`
+- Train the All-CNN network on CIFAR-10 with a custom learning rate schedule
+
+### PS5 Variational Inference and VAEs
+
+- Understand the theory behind Variational Inference
+- Train a Variational Auto-Encoder for generating MNIST digits
 
 ## [Final Project: Few-Shot Meta Q-Learning with Reptile](https://github.com/sheilsarda/ESE546_Final_Project)
