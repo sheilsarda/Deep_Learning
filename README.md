@@ -6,9 +6,11 @@ Sheil Sarda
 
 Taught by Prof. Pratik Chaudhari in Fall 2020
 
+## [Brief Summary of Topics Covered](refs/course_summary.pdf) 
+
 ## Assignments Overview
 
-**Note:** PS0 was just a refresher for the Calculus and Statistics concepts required for the class.
+**Note:** PS0 was just a refresher for the Calculus and Statistics concepts required for the class
 
 ### PS1 SVM and Neural Networks
 
