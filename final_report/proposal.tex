@@ -1,0 +1,101 @@
+\documentclass[11pt, reqno, letterpaper, twoside]{amsart}
+\linespread{1.2}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{amssymb, bm, mathtools}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[pdftex, xetex]{graphicx}
+\usepackage{enumerate, setspace}
+\usepackage{float, colortbl, tabularx, longtable, multirow, subcaption, environ, wrapfig, textcomp, booktabs}
+\usepackage{pgf, tikz, framed}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+\usepackage[english]{babel}
+
+\usepackage{microtype}
+\microtypecontext{spacing=nonfrench}
+
+\usepackage{times}
+\title{Behavior-Guided Policy Optimization as a Model for Few-Shot Learning}
+\author{
+	Rahul Maganti [rmag@seas],\\
+	Sheil Sarda [sheils@seas],\\
+		Jason Xian [xjason@seas],
+}
+
+\begin{document}
+
+\begin{abstract}
+Most machine learning applications require large loads of data to train models. Few-shot learning alleviates this problem by extracting important information on rare cases from a small amount of data, with only limited prior information. By comparing a novel few-shot learning technique with an existing few-shot learning technique and a non- few-shot learning technique, we hope to compare these techniques on extrapolating information in video game environments. 
+
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+Deep neural networks work well only when there is a lot of training data present. Moreover, training these networks is often slow. Human intelligence, on the other hand, learns quickly and extrapolates well only from a small number of data points. We believe learning in a low-data regime remains a key challenge for Deep learning.
+
+We wish to quantitatively validate the effectiveness of several few-shot learning models by performing extensive simulations in the context of video games to show that the state-of-the art few-shot learning methods significantly outperform traditional data augmentation and other non few-shot learning approaches. We believe that the results obtained from the context of video games will endorse the superior capability of few-shot learning approaches in low-data regimes.
+
+\section{Prior Art}
+
+There have been three major approaches of few-shot learning:
+
+\begin{enumerate}
+	
+	\item Using prior knowledge about similarity: Whereas traditional ML models cannot discriminate between classes not present in the training data, few-shot learning enables models to separate classes that are not even present, allowing the models to separate unseen classes. Examples of this include Siamese Networks \cite{koch2015siamese} (discriminating two unseen classes) and Matching Networks \cite{vinyals2016matching} (discriminating  multiple unseen classes).
+	
+	\item Constraining the learning algorithm: By choosing specific hyperparameters or choosing learning update rules that converge quickly, few-shot learning enables models to generalize well on small amounts of training data. Examples of these include Reptile \cite{nichol2018first} (an application of the Shortest Descent algorithm) and SNAIL \cite{mishra2017simple} (which uses temporal convolutions to aggregate contextual information). 
+	
+	\item Exploiting prior knowledge: By using the structure and variability of the data, models can generalize recurring patterns. This is especially prevalent in computer vision tasks like object detection and character detection \cite{lake2015human}.
+	
+\end{enumerate}
+
+Several libraries have been built for few-shot learning, including Torchmeta in PyTorch and FewRel. For this project, we will be focusing on the second approach by constraining the learning/optimization algorithms. Our candidate for a novel few-shot learning algorithm to benchmark is based on the Wasserstein Distance (WD) regularized objective function, which regularizes the feature vectors from different domains \cite{pacchiano2019learning}.
+
+
+\section{Methods}
+
+Our approach is two-fold. First, we will compare our candidate algorithm against existing few-shot learning algorithms by comparing a meta learner with a WD-regularized objective with a SNAIL, an algorithm that uses Trust-Region Policy Optimization (TRPO) to optimize the objective function for the meta-learner. Second, we will compare our candidate algorithm against non-meta learners to get a baseline for understanding the generalizability of our candidate algorithm. 
+
+In both comparisons, the learning environment will be that of a video game. During test time, we will given the algorithm to interact in the environment (i.e., a few frames), and we will compare the loss on each of the three algorithms over a series of different games.
+
+\begin{enumerate} 
+	\item Set up a WD-regularized objective to train a meta-learner on different videogame tasks.\cite{pacchiano2019learning} 
+	\item Design the specifications of our candidate algorithm (write pseudocode) 
+	\item Use behavior-guided policy optimization algorithms based on this objective train our meta-learner, including: 
+	\begin{itemize}
+		\item Behavior-Guided Policy Gradient 
+		\item Behavior-Guided Evolution Strategies
+	\end{itemize} 
+	\item Train meta-learner using existing meta-learning algorithms (e.g. SNAIL) as baselines. 
+	\item Compare performance of our meta-learner to the baselines. 
+	\item Apply existing standard reinforcement learning baselines on video game environments. (e.g. Deep Q-Networks (DQN), Actor-Critic). \cite{mnih2013playing}.
+	\item Compare our meta-learner to these standard baselines.  
+\end{enumerate} 
+
+We plan to use standard 2D arcade-like video-game environments, including: 
+\begin{itemize}
+	\item Atari games (Open AI arcade collection) 
+	\item Superman 
+	\item Wait for Breakfast
+\end{itemize}
+
+\section{Timeline and splitting of work}
+
+\begin{itemize}
+	\item Week 1: Continue researching papers and techniques used in video game learning environments. 
+	\item Week 2: Explore the performance of Q-learning on video game learning environments. Explore the SNAIL algorithm and how it achieves few-shot learning.
+	\item Week 3: Propose a candidate algorithm to apply the Wasserstein Distance and write the code to train the model on the video game learning environment. Compare this candidate algorithm against the Q-learning algorithms and SNAIL algorithm.
+	\item Week 4: Consolidate, write project report.
+\end{itemize}
+
+%\cite*{bishop2006pattern}
+
+{
+% create a ref.bib Bibtex file in the same folder
+\bibliography{refs}
+\bibliographystyle{apalike}
+}
+
+\end{document}
